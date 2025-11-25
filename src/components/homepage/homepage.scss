@@ -5,7 +5,7 @@
     background-color: var(--color-white);
     overflow: hidden;
     position: relative;
-
+    max-height: 900px;
     .wrapper {
         max-width: 1300px;
         height: 100%;
@@ -23,6 +23,7 @@
             flex-direction: column;
             justify-content: center;
             gap: 2rem;
+            max-height: 900px;
  
          
       @include mobile {
@@ -116,7 +117,7 @@
         position: absolute;
         top: 10%;
         right: 10%;
-        
+        max-height: 700px;
       
         @include mobile {
             height: 50%;
@@ -143,5 +144,6 @@
         opacity: 0.7;
         width: 50%;
         font-weight: bold;
+        
     }
 }

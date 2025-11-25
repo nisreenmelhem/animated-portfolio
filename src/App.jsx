@@ -11,7 +11,7 @@ import Skills from "./components/skills/skills";
 const App = () => {
 
 
-  return <div>
+  return <main className="main-container">
     <section id="Homepage">
       <Navbar />
       <Homepage />
@@ -32,7 +32,7 @@ const App = () => {
       <Contact />
     </section>
 
-  </div>
+  </main>
 };
 
 export default App;

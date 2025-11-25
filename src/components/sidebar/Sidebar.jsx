@@ -78,8 +78,9 @@ const Sidebar = () => {
                     zIndex: 1000, 
                     pointerEvents: 'auto', 
                 }}
+                  initial={false}
             >
-                <motion.div className="bg" variants={variants}>
+                <motion.div className="bg"  variants={variants}>
                     <Links />
                 </motion.div>
                 <ToggleButton setOpen={setOpen} />

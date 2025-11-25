@@ -19,7 +19,9 @@ const variants = {
     }
 }
 const Contact = () => {
-    const labels = [{ id: 1, title: 'Mail', text: 'nisreenmelhem3@gmail.com', icon: 'Mail' }, { id: 2, title: 'Address', text: 'Baghdad street/ Homs/ Syria', icon: 'Address' }, { id: 3, title: 'Phone', text: '(+963) 992 448 443', icon: 'Contact' }]
+    const address = "Bab Al-Sebaa, Homs, Syria"
+    const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}`
+    const labels = [{ id: 1, title: 'Mail', text: 'nisreenmelhem3@gmail.com', icon: 'Mail', link: 'mailto:nisreenmelhem3@gmail.com' }, { id: 2, title: 'Address', text: 'Baghdad street/ Homs/ Syria', icon: 'Address', link: mapsUrl }, { id: 3, title: 'Phone', text: '(+963) 986 854 664 ', icon: 'Contact', link: 'tel:+963986854664 ' }]
     const ref = useRef()
     const formRef = useRef()
     const [error, setError] = useState(null)
@@ -37,12 +39,12 @@ const Contact = () => {
             .then(
                 () => {
                     setError(false)
-                    setIsLoading(false); 
+                    setIsLoading(false);
                     setSuccess(true)
                     const nameInput = document.getElementsByName('name')[0];
                     const emailInput = document.getElementsByName('email')[0];
                     const messageInput = document.getElementsByName('message')[0];
-            
+
                     nameInput.value = '';
                     emailInput.value = '';
                     messageInput.value = '';
@@ -50,13 +52,16 @@ const Contact = () => {
                 (error) => {
                     setError(true)
                     setErrMsg(error.text)
-                    setIsLoading(false); 
+                    setIsLoading(false);
                     setSuccess(false)
                 },
-                
+
             );
     };
 
+    const handleClick = (link) => {
+        window.open(link, "_blank", "noopener,noreferrer")
+    }
     return (
         <motion.div className='contact' variants={variants} ref={ref}
             initial="initial" whileInView="animate">
@@ -66,7 +71,7 @@ const Contact = () => {
                     {labels.map((label) => {
                         return (
                             <motion.div variants={variants} className='label' key={label.id} >
-                                <div className='iconContainer'>
+                                <div className='iconContainer' onClick={()=>handleClick(label.link)}>
                                     <Icon name={label.icon} w="100%" h="100%" />
                                 </div>
                                 <motion.div className="item" variants={variants}>
@@ -88,11 +93,11 @@ const Contact = () => {
                         <input type='text' placeholder='Name' name='name' required />
                         <input type='email' placeholder='Email' name='email' required />
                         <textarea rows='8' placeholder='Message' name='message' required />
-                        <button type='submit'  aria-label="submit">
-                        {isLoading?<Icon name="Loading" w="100%" h="100%"/>:'Send Message'} 
-                            </button>
+                        <button type='submit' aria-label="submit">
+                            {isLoading ? <Icon name="Loading" w="100%" h="100%" /> : 'Send Message'}
+                        </button>
                         {error && <span className='error'>{errMsg}</span>}
-                        {success&&<span className='success'>Message sent successfully</span>}
+                        {success && <span className='success'>Message sent successfully</span>}
                     </motion.form>
                 </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { lazy, Suspense } from "react";
 import './icon.scss'
 import { firstUp } from '../../utilities/functions';
-
+import { motion } from "framer-motion";
 const icons = {
   Facebook: lazy(() => import("../icons/Facebook")),
   Instagram: lazy(() => import("../icons/Instagram")),
@@ -25,7 +25,7 @@ function Icon({ name, w = "30", h="30", c = "dark", hover, m, circle, ...rest })
 
   return (
     <Suspense fallback={"loading"}>
-      <span
+      <motion.span
         className={`wrap ${hover ? 'hover' : ''} ${circle ? 'circle' : ''}`}
         style={{
           width: `calc(${w}px + ${hover ? '22px' : '0'})`,
@@ -36,7 +36,7 @@ function Icon({ name, w = "30", h="30", c = "dark", hover, m, circle, ...rest })
         {...rest}
       >
         <Component style={{ width: w, height: h || w }} />
-      </span>
+      </motion.span>
     </Suspense>
   );
 }
