@@ -67,7 +67,7 @@ const Homepage = () => {
           Full Stack developer & Problem Solver
           </motion.h1>
           <motion.div className="buttons" variants={textVariants}>
-            <motion.button variants={textVariants} onClick={()=>handleButtonClick('Portfolio')}>See the Latest Works</motion.button>
+            <motion.button  variants={textVariants} onClick={()=>handleButtonClick('Portfolio')}>See the Latest Works</motion.button>
             <motion.button variants={textVariants} onClick={()=>handleButtonClick('Contact')}>Contact Me</motion.button>
             <motion.div className='cv'   onClick={handleDownload}>
               <span>Look at my CV</span>

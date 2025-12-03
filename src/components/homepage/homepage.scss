@@ -6,6 +6,7 @@
     overflow: hidden;
     position: relative;
     max-height: 900px;
+
     .wrapper {
         max-width: 1300px;
         height: 100%;
@@ -13,29 +14,30 @@
         margin-left: 200px;
         z-index: 800;
         position: relative;
+
         @include mobile {
-            margin: 1rem;
-          }
+            margin: auto;
+        }
+
         .text-container {
-            height: 100%;
+            height: auto;
             width: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 2rem;
-            max-height: 900px;
- 
-         
-      @include mobile {
-       
-        height: 50%;
-        width: 100vw;
-        gap: 10px;
-        align-items: center;
-        text-align: center;
-        padding-right:0.5rem ;
-      }
-            
+            gap: 1rem;
+
+
+            @include mobile {
+
+                height: 50%;
+                width: 100vw;
+                gap: 10px;
+                align-items: center;
+                text-align: center;
+                margin: 0 auto;
+            }
+
             h2 {
                 font-family: 2rem;
                 color: var(--color-dark-purpule);
@@ -44,15 +46,20 @@
 
             h1 {
                 font-size: 5.5rem;
-                
-            @include mobile{
-                font-size: 2rem;
-            }
+
+                @include mobile {
+                    font-size: 2rem;
+                }
             }
 
             .buttons {
                 display: flex;
-                .cv,button {
+                gap: 1rem;
+                width: 100%;
+             
+
+                .cv,
+                button {
                     z-index: 999;
                     padding: 20px;
                     border: 1px solid var(--color-english-violet);
@@ -64,20 +71,23 @@
                     font-weight: 400;
 
                     @include mobile {
-                       height: 3rem;
-                       font-size: 0.7rem;
-                       padding: 8px;
-                      }
+                        height: 3rem;
+                        font-size: 0.7rem;
+                        padding: 8px;
+                        margin-right: 0;
+
+                    }
 
                 }
 
-                .cv:hover,button:hover {
+                .cv:hover,
+                button:hover {
                     background-color: var(--color-english-violet);
                     color: var(--color-white);
                     font-weight: 700;
 
-                    svg{
-                        g{
+                    svg {
+                        g {
                             fill: var(--color-white);
                         }
                     }
@@ -87,26 +97,32 @@
                         font-size: 0.7rem;
                         padding: 8px;
                         font-weight: 500;
-                       }
+
+                    }
                 }
-                .cv{
+
+                .cv {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    gap:0.5rem;
+                    gap: 0.5rem;
                 }
+                     @include mobile {
+                         align-items: center;
+                justify-content: center;
+                    }
 
             }
 
-        
-            
+
+
 
             img {
                 width: 100px;
 
                 @include mobile {
                     width: 50px;
-                  }
+                }
             }
         }
     }
@@ -118,21 +134,21 @@
         top: 10%;
         right: 10%;
         max-height: 700px;
-      
+
         @include mobile {
             height: 50%;
             width: 100%;
             top: unset;
             right: unset;
             bottom: 0;
-          }
-      
-          img{
+        }
+
+        img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-          }
-      
+        }
+
     }
 
     .slidingTextContainer {
@@ -144,6 +160,6 @@
         opacity: 0.7;
         width: 50%;
         font-weight: bold;
-        
+
     }
 }
