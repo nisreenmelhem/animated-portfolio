@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import Icon from '../../ui/Icon/Icon'
 import Eschool from "../../assets/images/eschool.webp"
 import Tourbook from "../../assets/images/tourbook.webp"
+import Terkawi from "../../assets/images/terkawi.webp"
 import Automate from "../../assets/images/automate.webp"
 import Dashboard from "../../assets/images/car-dashboard.webp"
 import Teneze from "../../assets/images/teneze-game.webp"
@@ -15,14 +16,23 @@ import Job from "../../assets/images/job-position.webp"
 import Myfamily from "../../assets/images/myfamily.webp"
 const Portfolio = () => {
   const projects = [
-    {
-      id: 11, title: 'My Family Foundation', image: Myfamily, company: 'me', link: 'https://myfamilyfoundation.netlify.app/',
-      desc: 'An introductory website for a volunteer foundation. Designed using Next.js, Tailwind-Css, Framer-motion, EmailJS and JavaScript.'
-    },
+
     // {
     //   id: 1, title: 'eSchool', image: Eschool, company: 'HNNDES', link: '',
     //   desc: 'A responsive dashboard for managing all activities in an educational institution. Designed using React.js, Redux, Styled-Component, Css/Sass, Yup and JavaScript.'
     // },
+    //         {
+    //   id: 13, title: 'Investor One', image: Investor, company: 'me', link: 'https://www.hnndes.com/project/6925620854da0d4979b3be54',
+    //   desc: 'A modern fintech platform delivering professional stock analysis tools to retail investors in Germany and Europe. Features real-time charts, watchlists, AI-powered insights, and portfolio tracking in a clean, responsive interface. Designed using React.js, Typescript, Tailwind-Css, Yup and GraphQL.'
+    // },
+        {
+      id: 12, title: 'Fawaz Alterkawi', image: Terkawi, company: 'me', link: 'https://www.hnndes.com/project/6925620854da0d4979b3be54',
+      desc: 'Minimalist, high-performance personal portfolio for a full-stack developer. Smooth animations, dark mode, fully responsive.. Designed using React.js, Typescript, Tailwind-Css and Framer-motion.'
+    },
+        {
+      id: 11, title: 'My Family Foundation', image: Myfamily, company: 'me', link: 'https://myfamilyfoundation.netlify.app/',
+      desc: 'An introductory website for a volunteer foundation. Designed using Next.js, Tailwind-Css, Framer-motion, EmailJS and JavaScript.'
+    },
     {
       id: 2, title: 'TourBook', image: Tourbook, company: 'me', link: 'https://github.com/NisrinML/tour-book.git',
       desc: 'A website that offers a new way for make a specific tour, publish it, register on it and more. Designed using React.js, React-leaflet, Redux-Toolkit, Tailwind-Css, Yup, Axios and JavaScript.'

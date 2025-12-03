@@ -123,13 +123,13 @@
            width: 100%;
          }
         .box {
-            padding: 20px;
+            padding:4rem 20px;
             flex: 1;
             background-color: var(--color-light-purpule);
             border: 0.5px solid var(--color-english-violet);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             text-align: center;
             gap: 0.5rem;
@@ -141,7 +141,9 @@
                 align-self: center;
                 flex-direction: row-reverse;
                 justify-content: flex-end;
+                align-items: center;
                 width: 80%;
+                 padding: 1rem;
             }
             b {
                 position: absolute;
