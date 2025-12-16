@@ -1,130 +1,118 @@
 @import "../../css/app.scss";
+
 .portfolio {
-    position: relative;
+  padding: 4rem 2rem;
+  background-color: var(--color-snow);
 
-    .progress {
-        position: sticky;
-        top: 0;
-        left: 0;
-        padding-top: 3rem;
-        text-align: center;
-        color: var(--color-english-violet);
-        font-size: 2rem;
+  .portfolio-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: var(--color-english-violet);
 
-        @include mobile {
-           padding-top: calc(100vh - 100px);   
-           font-size: 1rem;       
-          }
-        .progressBar {
-            height: 0.7rem;
-            background-color: var(--color-light-purpule);
-            border-radius: 10px;
-        }
+    @include mobile {
+      font-size: 2rem;
+    }
+  }
+
+  .projects-grid {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--color-white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+    
+    &:hover {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
 
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    &.locked {
+      opacity: 0.85;
+    }
+
+    .image-wrapper {
+      height: 200px;
+      overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+      img {
         width: 100%;
         height: 100%;
-        overflow: hidden;
-        background-color: var(--color-snow);
-     
-        .wrapper {
-
-            max-width: 1300px;
-            height: 100%;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            @include mobile {
-                flex-direction: column;
-                gap: 0rem;
-              }
-            .imageContainer {
-                flex: 1;
-                height: 50%;
-                width: 50vw;
-                @include mobile {
-                    max-height: 300px;
-                    width: 80%;
-                    padding-top: 25%;
-                  }
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;  
-                    @include mobile {
-                      object-fit: contain;
-                      }
-                }
-            }
-
-            .textContainer {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                gap: 2rem;
-                @include mobile {
-                   transform: none !important;
-                   gap: 1rem;
-                   padding: 10px;
-                   align-items: center;
-                   text-align: center;
-                  }
-                h2{
-                    font-size: 3rem;
-                    @include mobile {
-                        font-size: 2rem;
-                      }
-                }
-
-                p{
-                    color: var(--color-dark-purpule);
-                    font-size: 1.2rem;
-                    @include mobile {
-                      font-size: 1rem;
-                      }
-                }
-
-                button{
-                    background-color: var(--color-english-violet);
-                    border: none;
-                    border-radius: 10px;
-                    padding: 10px;
-                    width: 250px;
-                    cursor: pointer;
-                    color: var(--color-white);
-                    font-size: 0.9rem;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 0.5rem;
-                    @include mobile {
-                        padding: 8px;
-                        width: 200px;
-                        font-size: 0.9rem;
-                        }
-                    &:hover{
-                        background-color:var( --color-dark-purpule) ;
-                        font-size: 1rem;
-                        @include mobile {
-                            font-size: 1rem;
-                            }
-                    }
-                    &.disabled {
-                        cursor: not-allowed; 
-                        &:hover {
-                            background-color: var(--color-english-violet);
-                            font-size: 0.9rem;
-                        }
-                    }
-                }
-               
-            }
-        }
+        object-fit: cover;
+        border-radius: 16px 16px 0 0;
+      }
     }
+
+    .content {
+      padding:1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+
+      h3 {
+        font-size: 1.5rem;
+        color: var(--color-english-violet);
+      }
+
+      p {
+        font-size: 1rem;
+        color: var(--color-dark-purpule);
+        flex: 1;
+      }
+
+      button {
+        align-self: flex-start;
+        background-color: var(--color-english-violet);
+        color: var(--color-white);
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:hover {
+          background-color: var(--color-dark-purpule);
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  .show-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.show-more-btn {
+  background-color:transparent;
+  color: var(--color-english-violet);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+      color: var(--color-dark-purpule);
+    transform: translateY(-2px);
+  }
+}
+
 }

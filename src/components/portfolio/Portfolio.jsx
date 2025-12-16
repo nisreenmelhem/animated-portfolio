@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './portfolio.scss'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import Icon from '../../ui/Icon/Icon'
@@ -25,11 +25,11 @@ const Portfolio = () => {
     //   id: 13, title: 'Investor One', image: Investor, company: 'me', link: 'https://www.hnndes.com/project/6925620854da0d4979b3be54',
     //   desc: 'A modern fintech platform delivering professional stock analysis tools to retail investors in Germany and Europe. Features real-time charts, watchlists, AI-powered insights, and portfolio tracking in a clean, responsive interface. Designed using React.js, Typescript, Tailwind-Css, Yup and GraphQL.'
     // },
-        {
+    {
       id: 12, title: 'Fawaz Alterkawi', image: Terkawi, company: 'me', link: 'https://www.hnndes.com/project/6925620854da0d4979b3be54',
       desc: 'Minimalist, high-performance personal portfolio for a full-stack developer. Smooth animations, dark mode, fully responsive.. Designed using React.js, Typescript, Tailwind-Css and Framer-motion.'
     },
-        {
+    {
       id: 11, title: 'My Family Foundation', image: Myfamily, company: 'me', link: 'https://myfamilyfoundation.netlify.app/',
       desc: 'An introductory website for a volunteer foundation. Designed using Next.js, Tailwind-Css, Framer-motion, EmailJS and JavaScript.'
     },
@@ -38,7 +38,7 @@ const Portfolio = () => {
       desc: 'A website that offers a new way for make a specific tour, publish it, register on it and more. Designed using React.js, React-leaflet, Redux-Toolkit, Tailwind-Css, Yup, Axios and JavaScript.'
     },
     {
-      id: 3, title: 'University Admission', image:Automate, company: 'me', link: 'https://github.com/NisrinML/university-admission.git',
+      id: 3, title: 'University Admission', image: Automate, company: 'me', link: 'https://github.com/NisrinML/university-admission.git',
       desc: 'A website to automate the registration process for University Admission. Designed using React.js, Redux-Toolkit, Css, Axios and JavaScript.'
     },
     {
@@ -54,7 +54,7 @@ const Portfolio = () => {
       desc: 'A responsive React application allow you to create meme with the description you want. Designed using React.js and Css.'
     },
     {
-      id: 7, title: 'Aora', image:Aora, company: 'me', link: 'https://github.com/NisrinML/aora.git',
+      id: 7, title: 'Aora', image: Aora, company: 'me', link: 'https://github.com/NisrinML/aora.git',
       desc: 'A mobile application for sharing and watching videos. Designed using React-Native and Appwrite.'
     },
     {
@@ -66,7 +66,7 @@ const Portfolio = () => {
       desc: 'A dashboard for archiving agency records. Designed using Asp.net, MVC, jQuery, JavaScript, Bootstarp, HTML and Css.'
     },
     {
-      id: 10, title: 'Malakat', image:Job, company: 'DigitalGlobe', link: '',
+      id: 10, title: 'Malakat', image: Job, company: 'DigitalGlobe', link: '',
       desc: "a dashboard for Job Position and Employee's Modification management. Designed using Asp.net, MVC, jQuery, JavaScript, Bootstarp, HTML and Css."
     },
   ]
@@ -85,57 +85,69 @@ const Portfolio = () => {
     damping: 30
   })
 
-  const Single = ({ project }) => {
-    const ref = useRef()
-    //const imageSrc = `./src/assets/images/${project.image}`;
-    //track text container
-    const { scrollYProgress } = useScroll({
-      target: ref,
-    })
+  const INITIAL_COUNT = 6;
+  const [showAll, setShowAll] = useState(false);
 
-    //define animation for text
-    const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+  const visibleProjects = showAll
+    ? projects
+    : projects.slice(0, INITIAL_COUNT);
 
-    const locked = project.company != 'me'
-
-    const handleProjectClick = (link) => {
-      window.open(link, '_blank');
-    }
-
-    return (
-      <section >
-        <div className="container">
-          <div className="wrapper">
-            <div className="imageContainer" ref={ref}>
-              <img src={project.image} alt={`project_`+project.id} loading='lazy' />
-            </div>
-            <motion.div className="textContainer" style={{ y }}>
-              <h2 >{project.title}</h2>
-              <p>{project.desc}</p>
-              <button disabled={locked} className={locked ? 'disabled' : ''} onClick={() => handleProjectClick(project.link)}  aria-label="Project URL">
-                {locked ? <>
-                  <Icon name="Lock" w="100%" h="100%" />
-                  Private for {project.company}
-                </>
-                  : 'Project URL'}
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-    )
-  }
+  const handleClick = (project) => {
+    if (project.company !== "me") return;
+    window.open(project.link, "_blank");
+  };
 
   return (
-    <div className="portfolio" ref={ref}>
-      {/* <div className="progress">
-        <h1>Featured Works</h1>
-        <motion.div style={{scaleX}} className="progressBar">
 
-        </motion.div>
-      </div> */}
-      {projects.map((project) =>
-        <Single project={project} key={project.id} />
+    <div className="portfolio" ref={ref}>
+
+
+      <div className="projects-grid">
+        {visibleProjects.map((project) => {
+          const locked = project.company !== "me";
+
+          return (
+            <motion.div
+              key={project.id}
+              className={`project-card ${locked ? "locked" : ""}`}
+              whileHover={{ y: -8 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
+              <div className="image-wrapper">
+                <img src={project.image} alt={project.title} loading="lazy" />
+              </div>
+
+              <div className="content">
+                <h3>{project.title}</h3>
+                <p>{project.desc}</p>
+
+                <button
+                  disabled={locked}
+                  onClick={() => handleClick(project)}
+                >
+                  {locked ? (
+                    <>
+                      <Icon name="Lock" w="18" h="18" />
+                      Private
+                    </>
+                  ) : (
+                    "View Project"
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+      {projects.length > INITIAL_COUNT && (
+        <div className="show-more-wrapper">
+          <button
+            className="show-more-btn"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        </div>
       )}
     </div>
   )
