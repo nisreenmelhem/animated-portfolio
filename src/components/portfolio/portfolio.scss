@@ -114,5 +114,7 @@
     transform: translateY(-2px);
   }
 }
-
+  @include mobile {
+     padding: 2rem 1rem;
+  }
 }
